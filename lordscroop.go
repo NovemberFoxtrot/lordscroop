@@ -1,11 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"runtime"
-  "bufio"
-  "strings"
+	"strings"
 )
 
 var workers = runtime.NumCPU()
@@ -13,17 +13,17 @@ var workers = runtime.NumCPU()
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-  scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(os.Stdin)
 
-  for scanner.Scan() {
-    somestring := scanner.Text()
+	for scanner.Scan() {
+		somestring := scanner.Text()
 
-    if strings.Contains(somestring, "*") {
-      fmt.Println(somestring)
-    }
-  }
+		if strings.Contains(somestring, "*") {
+			fmt.Println(somestring)
+		}
+	}
 
-  if err := scanner.Err(); err != nil {
-    fmt.Fprintln(os.Stderr, "reading standard input:", err)
-  }
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading standard input:", err)
+	}
 }
